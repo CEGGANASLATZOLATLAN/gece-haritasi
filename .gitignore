@@ -1,0 +1,15 @@
+# Veri dosyaları GitHub'a yüklenmez (README'de indirme talimatı var)
+veri/ham/*
+veri/islenmis/*
+!veri/ham/.gitkeep
+!veri/islenmis/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
