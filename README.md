@@ -61,10 +61,25 @@ zirvesi **Nisan (‰26.5)** — Ramazan gecelerinin etkisi
 akşam ağırlıklı karma bölgeler ve çift zirveli dengeli istasyonlar.
 Bir istasyonun grafiği, çevresinin ne işe yaradığını söylüyor.
 
-### İnteraktif: ilçe ilçe saatlik nabız
+### Gece Haritası (interaktif)
 
-`ciktilar/haritalar/ilce_saatlik_nabiz_2023.html` — saat kaydıracıyla 15 büyük ilçenin
-raylı sistem yoğunluğunu izleyebilirsiniz (plotly, tarayıcıda açın).
+`ciktilar/haritalar/gece_haritasi_2023.html` — projeye adını veren harita: ilçe
+bazlı gece endeksi choropleth'i (folium; ilçe sınırları:
+[ozanyerli/istanbul-districts-geojson](https://github.com/ozanyerli/istanbul-districts-geojson)).
+Ayrıca `ciktilar/haritalar/ilce_saatlik_nabiz_2023.html` — saat kaydıracıyla 15
+büyük ilçenin raylı sistem yoğunluğu (plotly).
+
+### Yıllar arası: veri, metro açılışını yakalıyor
+
+![Gece endeksi kıyası](ciktilar/grafikler/karsilastirma/k3_gece_endeksi.png)
+
+2022↔2023 kıyasında (`scriptler/compare_years.py`) iki altyapı olayı çıplak
+gözle görünüyor: **Arnavutköy 2022'de gece liginde yokken 2023'te ‰43 ile
+2. sıraya fırlıyor** (M11 havalimanı metrosu Ocak 2023'te açıldı) ve
+**Beşiktaş ‰23'ten ‰36'ya sıçrıyor** (M7'nin Fulya/Yıldız uzantısı, yine
+Ocak 2023). Ocak 2022'nin çukuru da (günde 5.0M vs 2023'te 6.6M) Omicron
+dalgası + Elmadağ kar fırtınasının izi
+(`ciktilar/grafikler/karsilastirma/k1_aylik_hacim.png`).
 
 ## Veri
 
@@ -90,6 +105,10 @@ python kaynak/ingest.py
 
 # 3) Bir yılın tüm grafiklerini üret → ciktilar/grafikler/<yıl>/
 python scriptler/make_figures.py 2023
+
+# 4) Gece haritası (ilçe choropleth) ve yıllar arası kıyas
+python scriptler/make_gece_haritasi.py 2023
+python scriptler/compare_years.py
 ```
 
 ### Başka bir yılı işlemek
