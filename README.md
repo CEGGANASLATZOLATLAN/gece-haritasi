@@ -63,13 +63,3 @@ python scriptler/ozel_analizler.py                # kart tipi, Ramazan, günler
 python scriptler/make_gif.py 2023                 # animasyonlu harita
 ```
 
-## Yapı
-
-```
-├── defterler/   # veri keşfi
-├── sql/         # DuckDB sorguları
-├── kaynak/         # ingest, db, viz
-├── scriptler/     # doğrulama ve grafik/harita üreticileri
-├── data/        # ham + işlenmiş veri (repoda değil) ve lookup tabloları
-└── ciktilar/     # grafikler ve haritalar
-```
