@@ -1,9 +1,12 @@
 # Gece Haritası — İstanbul Saat Kaçta Nerede Yaşıyor?
 
 İBB Açık Veri Portalı'nın **Saatlik Toplu Ulaşım Veri Seti** ile İstanbul'un
-saatlik nabzını çıkaran bir veri analizi projesi. 2023'ün 12 ayı, **~190 milyon
-satır** ham CSV, DuckDB ile işlendi; şehrin ne zaman uyandığı, hangi ilçenin
-gece yaşadığı ve hangi günlerin "normal" olmadığı gerçek veriyle gösterildi.
+saatlik nabzını çıkaran bir veri analizi projesi. 2022'den 2024 Temmuz'una
+**31 ay, ~475 milyon satır** ham CSV, DuckDB ile işlendi; şehrin ne zaman
+uyandığı, hangi ilçenin gece yaşadığı, hangi günlerin "normal" olmadığı ve
+metro açılışlarının şehir ritmini nasıl değiştirdiği gerçek veriyle gösterildi.
+(Aşağıdaki tekil yıl grafikleri 2023'ündür; 2022 ve 2024 versiyonları
+`ciktilar/grafikler/` altında.)
 
 > **Tek cümlelik özet:** İBB'nin milyonlarca satırlık gerçek açık verisini
 > DuckDB ile işledim, window functions ile analiz ettim, İstanbul'un saatlik
@@ -118,9 +121,9 @@ Pipeline yıl-parametriktir: o yılın aylık CSV'lerini indirip aynı üç adı
 
 | Yıl | Durum |
 |-----|-------|
-| 2022 | 12 ay sağlam görünüyor → tam yıl ✅ |
-| 2023 | 12 ay doğrulandı ✅ (bu repodaki analiz) |
-| 2024 | Ocak–Temmuz sağlam; Ağustos+ bozuk → kısmi yıl |
+| 2022 | 12 ay doğrulandı ve işlendi ✅ |
+| 2023 | 12 ay doğrulandı ve işlendi ✅ |
+| 2024 | Ocak–Temmuz doğrulandı ve işlendi ✅; Ağustos+ portalda bozuk |
 | 2021 | Ekim dosyası bozuk → 11 ay |
 | 2020 | Pandemi yılı; dosyalar küçük ama muhtemelen gerçek (şehir durmuştu). `ingest`/`validate` eşiğini `--esik` ile düşürmek gerekebilir |
 

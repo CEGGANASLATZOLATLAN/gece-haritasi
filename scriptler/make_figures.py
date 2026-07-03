@@ -58,8 +58,13 @@ OZEL_GUNLER = {
     2024: {
         "2024-01-01": "Yılbaşı",
         "2024-03-31": "Yerel seçim",
+        "2024-04-09": "Ramazan B. arifesi",
         "2024-04-10": "Ramazan Bayramı",
+        "2024-04-23": "23 Nisan",
+        "2024-05-01": "1 Mayıs",
+        "2024-06-15": "Kurban B. arifesi",
         "2024-06-16": "Kurban Bayramı",
+        "2024-06-17": "Kurban B. 2. günü",
     },
 }
 
@@ -175,6 +180,7 @@ def fig_04_anomali(con, yil):
     # Sözlükte adı olan her anomaliyi etiketle; kalanlardan en uç 6'ya tarih yaz
     en_uc = set(anomali.reindex(anomali["z"].abs()
                                 .sort_values(ascending=False).index).head(6).index)
+    sayac = 0
     for idx, r in anomali.iterrows():
         gun = str(r["transition_date"].date())
         if gun in ozel:
@@ -184,9 +190,13 @@ def fig_04_anomali(con, yil):
         else:
             continue
         yukari = r["z"] > 0
+        # ardışık etiketleri dikeyde şaşırt ki bayram kümeleri çakışmasın
+        kaydir = 11 * (sayac % 2)
+        sayac += 1
         ax.annotate(etiket, (r["transition_date"], r["z"]),
                     textcoords="offset points",
-                    xytext=(6, 8 if yukari else -14), fontsize=8)
+                    xytext=(6, (8 + kaydir) if yukari else (-14 - kaydir)),
+                    fontsize=8)
     ax.set_title(f"Hangi günler 'normal' değildi? ({yil})")
     ax.set_xlabel("")
     ax.set_ylabel("Z-skoru (aynı haftanın gününe göre)")
