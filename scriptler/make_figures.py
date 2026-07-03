@@ -29,9 +29,14 @@ SQL = PROJE_KOKU / "sql"
 # Yeni bir yıl işlerken o yılın olaylarını buraya ekleyin.
 OZEL_GUNLER = {
     2022: {
-        "2022-01-24": "Kar fırtınası (Elmadağ)",
+        "2022-01-01": "Yılbaşı",
+        "2022-01-24": "Kar fırtınası 1. gün",
+        "2022-01-25": "Kar fırtınası 2. gün",
+        "2022-05-01": "Ramazan B. arifesi",
         "2022-05-02": "Ramazan Bayramı",
+        "2022-07-08": "Kurban B. arifesi",
         "2022-07-09": "Kurban Bayramı",
+        "2022-09-05": "Okullar açıldı",
         "2022-10-29": "Cumhuriyet Bayramı",
     },
     2023: {
@@ -167,11 +172,17 @@ def fig_04_anomali(con, yil):
     ax.axhline(2, ls="--", lw=0.8, color="gray")
     ax.axhline(-2, ls="--", lw=0.8, color="gray")
     ozel = OZEL_GUNLER.get(yil, {})
-    # En uç 8 anomaliyi etiketle: sözlükte varsa adıyla, yoksa tarihiyle
-    for _, r in anomali.reindex(anomali["z"].abs()
-                                .sort_values(ascending=False).index).head(8).iterrows():
-        etiket = ozel.get(str(r["transition_date"].date()),
-                          tr_tarih(r["transition_date"]))
+    # Sözlükte adı olan her anomaliyi etiketle; kalanlardan en uç 6'ya tarih yaz
+    en_uc = set(anomali.reindex(anomali["z"].abs()
+                                .sort_values(ascending=False).index).head(6).index)
+    for idx, r in anomali.iterrows():
+        gun = str(r["transition_date"].date())
+        if gun in ozel:
+            etiket = ozel[gun]
+        elif idx in en_uc:
+            etiket = tr_tarih(r["transition_date"])
+        else:
+            continue
         yukari = r["z"] > 0
         ax.annotate(etiket, (r["transition_date"], r["z"]),
                     textcoords="offset points",
