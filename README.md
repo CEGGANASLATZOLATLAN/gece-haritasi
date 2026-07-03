@@ -12,6 +12,8 @@ metro açılışlarının şehir ritmini nasıl değiştirdiği gerçek veriyle 
 > DuckDB ile işledim, window functions ile analiz ettim, İstanbul'un saatlik
 > yaşam ritmini çıkarıp görselleştirdim.
 
+![24 saatte İstanbul'un nabzı](ciktilar/grafikler/nabiz_24saat_2023.gif)
+
 ## Bulgular
 
 ### İstanbul hafta içi iki kez patlar, hafta sonu tek tepelidir
@@ -83,6 +85,35 @@ gözle görünüyor: **Arnavutköy 2022'de gece liginde yokken 2023'te ‰43 ile
 Ocak 2023). Ocak 2022'nin çukuru da (günde 5.0M vs 2023'te 6.6M) Omicron
 dalgası + Elmadağ kar fırtınasının izi
 (`ciktilar/grafikler/karsilastirma/k1_aylik_hacim.png`).
+
+### Kim hangi saatte yolda? Kart tipleri konuşuyor
+
+![Kart tipleri](ciktilar/grafikler/ozel/fig_07_kart_tipi.png)
+
+`product_kind` kırılımı (`sql/07_kart_tipi.sql`): **"emekli saati" gerçek** —
+ücretsiz kart (65+/engelli) sabah zirvesine katılmıyor, 10:00–16:00 arasında
+kendi platosunu yaşıyor. Öğrenci ağırlıklı indirimli kart en keskin çift
+zirveli grup; yaz tatilinde profili yassılaşıp geç saate kayıyor — okul
+çantası inince şehir kullanımı da değişiyor.
+
+### Ramazan geceyi %65 canlandırıyor, sahur ise evde geçiyor
+
+![Ramazan](ciktilar/grafikler/ozel/fig_08_ramazan.png)
+
+Ramazan'da (2023 ve 2024 dönemleri ayrı ayrı, bayram haftaları hariç)
+hafta içi gece yarısı yolculukları normal döneme göre **%45–65 artıyor**
+(iftar sonrası/teravih dönüşü). Sahur saatlerinde (03–05) ise artış yok,
+hatta hafif düşüş — sahur sokakta değil evde yaşanıyor. Nisan 2023'ün
+‰26.5'lik gece endeksi rekorunun kaynağı bu gece canlanması.
+
+### Pazartesi sendromu veride yok, Cumartesi gecesi Pazar'a taşıyor
+
+![Günlerin kişiliği](ciktilar/grafikler/ozel/fig_09_gunlerin_kisiligi.png)
+
+Hafta içi beş günün profili neredeyse kopya — "Pazartesi sendromu"nun
+ulaşım verisinde izi yok. Cumartesi 17:00'de kendi zirvesini yapıyor;
+gece 00:00'ın en kalabalık günü ise **Pazar** — Cumartesi gecesinin
+sarkması. Pazar, haftanın en geç uyanan ve en sönük günü.
 
 ## Veri
 
