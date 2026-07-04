@@ -2,6 +2,8 @@
 
 ![24 saatte İstanbul'un nabzı](ciktilar/grafikler/nabiz_24saat_2023.gif)
 
+![İstanbul haritası](istanbul.png)
+
 İBB'nin saatlik toplu ulaşım verisiyle İstanbul'un günlük ritmi.
 2022 başından 2024 Temmuz'una kadar tüm yolculuk kayıtları DuckDB ve
 Python ile işlendi.
